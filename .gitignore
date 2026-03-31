@@ -1,0 +1,19 @@
+# Python bytecode (compiled files)
+__pycache__/
+*.py[cod]
+
+# Environment variables (API KEYS GO HERE)
+.env
+
+# Virtual environments
+.venv/
+
+
+# Data files (don't upload large datasets)
+*.csv
+*.json
+!example.json  # (Optional: use ! to exclude a specific file from being ignored)
+
+# IDE specific files
+.vscode/
+.idea/
