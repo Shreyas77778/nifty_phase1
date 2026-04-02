@@ -11,14 +11,20 @@ from tvDatafeed import TvDatafeed, Interval
 # 🚀 NEW: Import our custom NSE Option Chain Engine
 from nse_options_engine import NSEOptionChain
 
+from openai import OpenAI
+from dotenv import load_dotenv
+
 load_dotenv()
 
 class GlobalPulse:
     def __init__(self):
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key: print("❌ Critical Error: GEMINI_API_KEY not found in .env")
-        self.gemini = genai.Client(api_key=api_key)
+        # DeepSeek is OpenAI compatible
+        api_key = os.getenv("DEEPSEEK_API_KEY")
+        base_url = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
         
+        self.ai_client = OpenAI(api_key=api_key, base_url=base_url)
+        # ... rest of the code        
+         
         import logging
         logging.getLogger('tvDatafeed').setLevel(logging.CRITICAL) 
         self.tv = TvDatafeed()
